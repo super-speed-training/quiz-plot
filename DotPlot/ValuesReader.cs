@@ -4,7 +4,7 @@ using System.IO;
 namespace DotPlot
 {
     public class ValuesReader {
-        public IEnumerable<int> ReadValuesFromDataFile(string fullPathToFile) {
+        public int[] ReadValuesFromDataFile(string fullPathToFile) {
             using (var fi = File.OpenText(fullPathToFile))
             {
                 var values = new List<int>();
@@ -17,7 +17,7 @@ namespace DotPlot
                     }
                 }
 
-                return values;
+                return values.ToArray();
             }
         }
     }
