@@ -6,16 +6,15 @@ namespace DotPlot
     class Program
     {
         // TODO: Replace this string value with the path to actual data file.
-        private const string FullPathToDataFile = @"Values.Data.txt";
+        private const string FullPathToDataFile = @"D:\PlayCode\quiz-plot\data\Values.Data.txt";
 
         static void Main(string[] args)
         {
             Console.WriteLine("DOT Plot");
             Console.WriteLine();
-
-            var path = @"..\..\..\..\data\Values.Data.txt";
+            
             var ValueReader = new ValuesReader();
-            var data = ValueReader.ReadValuesFromDataFile(path);
+            var data = ValueReader.ReadValuesFromDataFile(FullPathToDataFile);
             var mean = FindMean(data);
 
             for (int i = 10; i >= 0; i--)
