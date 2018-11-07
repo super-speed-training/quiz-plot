@@ -1,30 +1,8 @@
-﻿using System;
-﻿using static System.Console;
+using System;
 using System.Linq;
-using System.Collections.Generic;
-using System.IO;
 
 namespace DotPlot
 {
-  public class ValuesReader {
-      public int[] ReadValuesFromDataFile(string fullPathToFile) {
-          using (var fi = File.OpenText(fullPathToFile))
-          {
-              var values = new List<int>();
-              string line;
-              while ((line = fi.ReadLine()) != null)
-              {
-                  if (!string.IsNullOrWhiteSpace(line))
-                  {
-                      values.Add(int.Parse(line));
-                  }
-              }
-
-              return values.ToArray();
-          }
-      }
-  }
-
     class Program
     {
         static int FindMean(int[] values) {
@@ -38,23 +16,27 @@ namespace DotPlot
         // TODO: Replace this string value with the path to actual data file.
         private const string FullPathToDataFile = @"./../data/Values.Data.txt";
 
-        static void Main(string[] args)
-        {
-            ValuesReader vr = new ValuesReader();
-            int[] arr = vr.ReadValuesFromDataFile(FullPathToDataFile);
-            //Console.WriteLine(FindMean(arr));
+                static void Main(string[] args)
+                {
+                    // TODO: Implement quiz here
+                    ValuesReader vr = new ValuesReader();
+                    int[] arr = vr.ReadValuesFromDataFile(FullPathToDataFile);
+                    int mean = FindMean(arr);
 
-            for (int i = 0; i <= 10; i++) {
-              for (int j = 0; j <= 10; j++) {
-                if (FindMean(arr) == i) Write("-");
-                if (j == 0) Write(10 - i);
-                if (i == arr[j]) Write("*");
-                else Write(" ");
-              }
-              WriteLine("");
+                    for (int i = 10; i >= 0; i--) {
+                        Console.Write("{0, 3:G}|", i);
+                        for (int j = 0; j < arr.Length; j++) {
+                          if (i == arr[j])
+                              Console.Write("*");
+                          else if (i == mean)
+                              Console.Write("-");
+                          else
+                              Console.Write(" ");
+                        }
+                        Console.Write("\n");
+                        if (i == 0)
+                            Console.WriteLine("  " + new String('=', arr.Length+10));
+                    }
+                }
             }
-
-            // TODO: Implement quiz here
         }
-    }
-}
