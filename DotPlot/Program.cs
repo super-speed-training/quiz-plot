@@ -10,10 +10,24 @@ namespace DotPlot
 
         static void Main(string[] args)
         {
+            int num = 10;
+            string star = "";
+
             Console.WriteLine("DOT Plot");
             Console.WriteLine();
 
             // TODO: Implement quiz here
+
+            while (num > -1)
+            {
+                Console.WriteLine(num + " |");
+                num--;
+                if (true)
+                {
+                    
+                }
+            }
+
         }
     }
 }
