@@ -18,6 +18,10 @@ namespace DotPlot
 
             for (int i = 10; i > 0; i--)
             {
+                if (i < 10)
+                {
+                    System.Console.Write(" ");
+                }
                 Console.Write($"{i} |");
                 for (int j = 0; j < values.Length; j++)
                 {
