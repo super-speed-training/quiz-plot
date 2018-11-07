@@ -36,7 +36,7 @@ namespace DotPlot
             return sum / values.Length;
         }
         // TODO: Replace this string value with the path to actual data file.
-        private const string FullPathToDataFile = @"./../data/Values.Data.txt";
+        private const string FullPathToDataFile = @"./data/Values.Data.txt";
 
         static void Main(string[] args)
         {
