@@ -16,22 +16,53 @@ namespace DotPlot
 
             // TODO: Implement quiz here
             try
-            {   // Open the text file using a stream reader.
-                StreamReader sr = new StreamReader(FullPathToDataFile);
-                // Read the stream to a string, and write the string to the console.
-                String line = sr.ReadToEnd();
-                Console.WriteLine(line);
+            {
+                // Open the text file using a stream reader.
+                //     StreamReader sr = new StreamReader(FullPathToDataFile);
+                //     // Read the stream to a string, and write the string to the console.
+                //     String line = sr.ReadToEnd();
+                //     Console.WriteLine(line);
 
-                for (int i = 0; i < 10; i++)
+                var reader = new ValuesReader();
+                var values = reader.ReadValuesFromDataFile(FullPathToDataFile);
+                var mean = FindMean(values);
+              
+                for (int i = 10; i >= 0; i--)
                 {
-                    //Do something
+                    Console.Write("{0,4:G} |", i);
+
+                    for (int j = 0; j < values.Length; j++)
+                    {
+                        if (i == values[j])
+                        {
+                            Console.Write("*");
+
+                        }
+                        else if (i == mean)
+                        {
+                            Console.Write("-");
+                        }
+                        else
+                        {
+                            Console.Write(" ");
+                        }
+
+                    }
+                    Console.WriteLine();
                 }
+                Console.Write(new String('=', values.Length));
             }
             catch (Exception e)
             {
                 Console.WriteLine("The file could not be read:");
                 Console.WriteLine(e.Message);
             }
+        }
+
+        static int FindMean(int[] values)
+        {
+            int mean = Convert.ToInt32(values.Average());
+            return mean;
         }
     }
 }
