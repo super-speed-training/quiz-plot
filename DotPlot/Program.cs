@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace DotPlot
@@ -10,10 +11,45 @@ namespace DotPlot
 
         static void Main(string[] args)
         {
-            Console.WriteLine("DOT Plot");
-            Console.WriteLine();
+            var reader = new ValuesReader();
+            var numbers = reader.ReadValuesFromDataFile($"..\\..\\..\\..\\data\\" + FullPathToDataFile);
+            var lines = new List<string>()
+            {
+                " 0 |",
+                " 1 |",
+                " 2 |",
+                " 3 |",
+                " 4 |",
+                " 5 |",
+                " 6 |",
+                " 7 |",
+                " 8 |",
+                " 9 |",
+                "10 |",
+            };
 
-            // TODO: Implement quiz here
+            var avg = (int)numbers.Average();
+            foreach (var item in numbers)
+            {
+                lines[item] += "*";
+                for (int i = 0; i < lines.Count; i++)
+                {
+                    if (i == item) continue;
+                    if (i == avg)
+                    {
+                        lines[i] += "-";
+                    }
+                    else
+                    {
+                        lines[i] += " ";
+                    }
+                }
+            }
+
+            foreach (var item in lines.OrderByDescending(it => it))
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
