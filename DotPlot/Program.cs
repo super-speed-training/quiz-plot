@@ -16,32 +16,27 @@ namespace DotPlot
             var values = valuesReader.ReadValuesFromDataFile(FullPathToDataFile);
             var mean = FindMean(values);
 
-            for (int i = 10; i > 0; i--)
+            for (int i = 10; i >= 0; i--)
             {
-                if (i < 10)
-                {
-                    System.Console.Write(" ");
-                }
-                Console.Write($"{i} |");
+                Console.Write($"{i,4:G} |");
                 for (int j = 0; j < values.Length; j++)
                 {
                     if (i == values[j])
                     {
-                        System.Console.Write("*");
+                        Console.Write("*");
                     }
                     else if (i == mean)
                     {
-                        System.Console.Write("-");
+                        Console.Write("-");
                     }
                     else
                     {
-                        System.Console.Write(" ");
+                        Console.Write(" ");
                     }
                 }
-                System.Console.WriteLine();
+                Console.WriteLine();
             }
-
-            // TODO: Implement quiz here
+            Console.WriteLine(new string('=', values.Length + 6));
         }
 
         static int FindMean(int[] values)
