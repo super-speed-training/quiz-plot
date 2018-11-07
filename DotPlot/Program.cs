@@ -5,15 +5,45 @@ namespace DotPlot
 {
     class Program
     {
-        // TODO: Replace this string value with the path to actual data file.
-        private const string FullPathToDataFile = @"Values.Data.txt";
-
+        private const string FullPathToDataFile = @"C:\Users\Mick\Desktop\quiz-plot\data\Values.Data.txt";
         static void Main(string[] args)
         {
             Console.WriteLine("DOT Plot");
-            Console.WriteLine();
+            var reader = new ValuesReader();
+            var values = reader.ReadValuesFromDataFile(FullPathToDataFile);
+            var mean = FindMean(values);
 
-            // TODO: Implement quiz here
+            for (int i = values.Max(); i >= 0; i--)
+            {
+                if (i < 10)
+                {
+                    Console.Write(" ");
+                }
+                Console.Write(i + "  |");
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if (i == values[j])
+                    {
+                        Console.Write("*");
+                    }
+                    else if (i == mean)
+                    {
+                        Console.Write("-");
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine("==============================================");
+        }
+
+        static int FindMean(int[] values)
+        {
+            var mean = (int)values.Average();
+            return mean;
         }
     }
 }
