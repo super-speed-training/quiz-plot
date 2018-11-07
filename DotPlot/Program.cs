@@ -17,7 +17,7 @@ namespace DotPlot
             for (int i = 0; i < data.Length; i++)
             {
                 Console.WriteLine(data[i]);
-            }
+            };
             // TODO: Implement quiz here
             Console.ReadLine();
         }
