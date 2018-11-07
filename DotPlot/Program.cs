@@ -13,7 +13,7 @@ namespace DotPlot
             var values = reader.ReadValuesFromDataFile(FullPathToDataFile);
             var mean = FindMean(values);
 
-            for (int i = 10; i >= 0; i--)
+            for (int i = values.Max(); i >= 0; i--)
             {
                 if (i < 10)
                 {
