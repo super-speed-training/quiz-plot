@@ -3,8 +3,10 @@ using System.IO;
 
 namespace DotPlot
 {
-    public class ValuesReader {
-        public int[] ReadValuesFromDataFile(string fullPathToFile) {
+    public class ValuesReader
+    {
+        public int[] ReadValuesFromDataFile(string fullPathToFile)
+        {
             using (var fi = File.OpenText(fullPathToFile))
             {
                 var values = new List<int>();
